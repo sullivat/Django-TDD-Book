@@ -1,5 +1,6 @@
 """ User Functionality Testing
 """
+import sys
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
@@ -8,6 +9,15 @@ from selenium.webdriver.common.keys import Keys
 
 
 class NewVisitorTest(StaticLiveServerTestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        for arg in sys.argv:
+            if 'liveserver' in arg:
+                cls.server_url = 'http://' + arg.split('=')[1]
+                return
+        super().setUpClass()
+        cls.server_url = cls.live_server_url
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -25,7 +35,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         """Testing customer story for a new customer, Edith."""
         # Eidth has heard about a cool new online to-do app. She goes
         # to check out it's homepage
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
 
         # She notices the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title)
@@ -62,7 +72,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
         # Edith starts a new to-do list
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Buy peacock feathers')
         inputbox.send_keys(Keys.ENTER)
@@ -80,7 +90,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.browser = webdriver.Firefox()
 
         # Francis visits the homepage. There is no sign of Edith's list
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
@@ -106,7 +116,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def test_layout_and_styling(self):
         # Edith goes to the home page
-        self.browser.get(self.live_server_url)
+        self.browser.get(self.server_url)
         self.browser.set_window_size(1024, 768)
 
         # She notices the input box is nicely centered
