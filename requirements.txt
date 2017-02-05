@@ -9,7 +9,6 @@ pylint==1.6.4
 python==3.5.2
 readline==6.2
 selenium==2.53.6
-setuptools==27.2.0
 six==1.10.0
 sqlite==3.13.0
 tk==8.5.18
