@@ -1,10 +1,9 @@
 astroid==1.4.9
+dj-database-url==0.4.2
 Django==1.10.5
 gunicorn==19.6.0
 lazy-object-proxy==1.2.2
-pip==9.0.1
 pylint==1.6.4
 selenium==2.53.6
 six==1.10.0
-wheel==0.29.0
 wrapt==1.10.8
