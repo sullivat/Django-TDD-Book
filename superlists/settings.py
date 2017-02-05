@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'superlists.wsgi.application'
 # Database settings for Heroku deployment
 # Update database configuration with $DATABASE_URL.
 import dj_database_url
-db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 
@@ -120,3 +120,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
+
+# Extra places for collectstatic to find static files.
+STATICFILE_DIRS = (
+    os.path.join(BASE_DIR, 'static')
+)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
