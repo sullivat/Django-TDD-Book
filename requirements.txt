@@ -1,16 +1,10 @@
-# packages in environment at /Users/sullivan/anaconda3/envs/django10:
-#
-astroid==1.4.9
-django==1.10.5
-lazy-object-proxy==1.2.2
-pip==9.0.1
-pylint==1.6.4
-readline==6.2
-selenium==2.53.6
-six==1.10.0
-sqlite==3.13.0
-tk==8.5.18
-wheel==0.29.0
-wrapt==1.10.8
-xz==5.2.2
-zlib==1.2.8
+astroid (1.4.9)
+Django (1.10.5)
+lazy-object-proxy (1.2.2)
+pip (9.0.1)
+pylint (1.6.4)
+selenium (2.53.6)
+setuptools (27.2.0)
+six (1.10.0)
+wheel (0.29.0)
+wrapt (1.10.8)
