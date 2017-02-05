@@ -5,7 +5,7 @@ django==1.10.5
 lazy-object-proxy==1.2.2
 pip==9.0.1
 pylint==1.6.4
-python==3.5.2
+python==3.5
 readline==6.2
 selenium==2.53.6
 six==1.10.0
